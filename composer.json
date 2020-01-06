@@ -1,0 +1,19 @@
+{
+    "name": "app/app",
+    "description": "Aplicação",
+    "license": "Free",
+    "homepage": "http://jandelson.tk/",
+    "require": {
+        "twig/twig": "^2.12",
+        "slim/slim": "^3.0",
+        "doctrine/dbal": "^2.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    }
+}

@@ -1,0 +1,54 @@
+{% extends "/layouts/base.html" %}
+
+{% block title %}Cadastro {{ hoje }} {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.telefone }}</td>
+                    <td>
+                        <form action="delete/{{ user.id }}" method="post">
+                            <input type="hidden" name="_METHOD" value="DELETE" />
+                            <input type="submit" value="Excluir" />
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form action="add" method="post">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                    placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone">
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastro</button>
+        </form>
+    </main>
+</div>
+{% endblock %}
