@@ -9,7 +9,9 @@ use Slim\Http\UploadedFile;
 
 $config = ['settings' => [
     'addContentLengthHeader' => false,
+    'displayErrorDetails' => true
 ]];
+
 $app = new \Slim\App($config);
 
 $app->get('/', function (Request $request, Response $response) {

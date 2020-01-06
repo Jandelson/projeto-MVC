@@ -22,8 +22,13 @@ class DB
             'charset' => 'utf8',
             'driver' => 'pdo_mysql',
         );
-
-        $this->db = \Doctrine\DBAL\DriverManager::getConnection($this->connectionParams, $this->config);
-        $this->query = $this->db->createQueryBuilder();
+        try {
+            $this->db = \Doctrine\DBAL\DriverManager::getConnection($this->connectionParams, $this->config);
+            if ($this->db->connect()) {
+                $this->log = "Connection";
+            }
+        } catch (\Exception $e) {
+            $this->log =  "Connection unsuccessful" . $e->getMessage();
+        }
     }
 }
