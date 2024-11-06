@@ -4,7 +4,7 @@
     "license": "Free",
     "homepage": "http://jandelson.tk/",
     "require": {
-        "twig/twig": "^2.12",
+        "twig/twig": "^3.11",
         "slim/slim": "^3.0",
         "doctrine/dbal": "^2.9"
     },
